@@ -38,3 +38,39 @@ Onde vai ser criado o servidor
 - importar apenas o router do express { router } para separar a parte de roteamento do express;
 - exportar routes;
 - construir as rotas.
+
+## Nodemon e Sucrase
+
+O node ainda não suporta algumas sintaxes. Para nãoi utilizar require por ex para importar, é possível usar formas como Babel. Aqui vamos utilizar o sucrase.
+
+#### Sucrase
+
+Entende a nova sintaxe para import/export
+
+```
+$ yarn add sucrase nodemon -D
+
+```
+
+Agora é possível alterar os requires para import e usar export default.
+
+```
+$ yarn sucrase-node src/server.js
+```
+
+#### Nodemon
+
+Inicializa o servidor automaticamente.
+
+Configurando:
+
+Criar arquivo de configuração p o Nodemon. Estabelece que quando executar nodemon em arquivos com extensão js, utilizar o sucrase em vez do nodemon.
+
+Criar "scripts" no package.json p o comando yarn dev
+
+```
+$ yarn dev
+
+```
+
+Para rodar o sucrase
