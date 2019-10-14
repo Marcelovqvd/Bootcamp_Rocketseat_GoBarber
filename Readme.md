@@ -297,3 +297,29 @@ Para arrumar tudo de forma automatica:
 Usado para times que usam editores diferentes
 
 instalar extensão EditorConfig no VsCode e gerar e configurar o arquivo .editorconfig.
+
+## Configurando Sequelize
+
+    $ yarn add sequelize
+
+e
+
+    $ yarn add sequelize-cli -D
+
+Criar
+
+    .sequelizerc
+
+vai exportar os caminhos dos arquivos e pastas criados na aplicação. Este arquivo não consegue utilizar o formato import/export.
+
+Criar
+
+    src/config/database.js
+
+e
+
+    $ yarn add pg pg-hstore
+
+v. configurações em:
+
+    src/config/database
