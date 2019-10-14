@@ -125,8 +125,8 @@ Se a máquina não suportar os requirements de sistema, pode-se usar o Docker To
 [Docker Tool Box](https://docs.docker.com/docker-for-windows/docker-toolbox/)
 
 Para testar:
-  
- Docker -v
+
+Docker -v
 
     Docker help
 
@@ -190,10 +190,9 @@ Para visualisar algum erro:
 
 O container criado pode ser utilizado por outras aplicações ou ser configurado para ser usado somente em uma aplicação específica, o que é melhor.
 
+## Sequelize
 
-## Sequelize 
-
-Sequelize - é um ORM p NodeJS e Bancos de dados relacionais (MySql, Postgres). 
+Sequelize - é um ORM p NodeJS e Bancos de dados relacionais (MySql, Postgres).
 
 ORM é uma forma de abstrair banco de dados, mudar a forma com que a aplicação se comunica com o banco de dados.
 
@@ -207,41 +206,39 @@ Esta sintaxe funciona com vários banco de dados
 
 Funcionalidade de controle de versão para base de dados. Mantém a base de dados atualizada entre todos os devs do time e entre ambientes de desenvolvimento e de produção.
 
-Cada arquivo de migration contém instruções para criação, alteração ou remoção de tabelas ou colunas da base de dados. 
+Cada arquivo de migration contém instruções para criação, alteração ou remoção de tabelas ou colunas da base de dados.
 
 Cada arquivo é uma migration e sua ordenação ocorre por data.
 
-A partir do momento em que a migration saiu do ambiente de desenvolvimento e foi repassada para outros usuários, desenvolvedores ou se o ambiente de produção já a executou, não é mais possível editar a migration. Se precisar mudar algo, tem que criar nova migration. 
+A partir do momento em que a migration saiu do ambiente de desenvolvimento e foi repassada para outros usuários, desenvolvedores ou se o ambiente de produção já a executou, não é mais possível editar a migration. Se precisar mudar algo, tem que criar nova migration.
 
-Cada migration deve realizar alterações em apenas uma tabela. É específica para cada tabela. 
-
+Cada migration deve realizar alterações em apenas uma tabela. É específica para cada tabela.
 
 #### Seeds
 
 Usado para configurar ambiente de testes. São arquivos que populam a base de dados para desenvolvimento (criam dados fakes); São usados em testes automatizados. São executáveis apenas por código/comando e nunca são utilizados em produção
 
-
 ## Arquitetura MVC
 
-É forma de estruturar pastas e arquivos da aplicação para separar as responsabilidades de cada um. 
+É forma de estruturar pastas e arquivos da aplicação para separar as responsabilidades de cada um.
 
-#### Model 
+#### Model
 
-Armazena a abstração do banco e manipula os dados. Não possui responsabilidade sobre a regra de negócio da aplicação. 
+Armazena a abstração do banco e manipula os dados. Não possui responsabilidade sobre a regra de negócio da aplicação.
 
-#### Controller 
+#### Controller
 
 É o ponto de entrada das requisições. Uma rota geralmente está associada a um método de controller. O controller é uma classe e nele pode incluir grande parte das regras de negócio da aplicação.
 
-#### View 
+#### View
 
-É o retorno ao cliente. No modelo API Rest é o JSON (não é o HTML), que será retornado ao front end e manipulado pelo React. 
+É o retorno ao cliente. No modelo API Rest é o JSON (não é o HTML), que será retornado ao front end e manipulado pelo React.
 
 Características:
 
- * classe
- * retorna JSON
- * Não chama outro controller
+- classe
+- retorna JSON
+- Não chama outro controller
 
 #### Quando criar um novo controller:
 
@@ -249,8 +246,54 @@ Cria-se quando houver uma nova entidade na aplicação. Pode haver controller qu
 
 #### 5 métodos:
 
-* index() - listar 
-* show() - exibir só um
-* store() - cadastrar
-* update() - alterar
-* delete() - deletar
+- index() - listar
+- show() - exibir só um
+- store() - cadastrar
+- update() - alterar
+- delete() - deletar
+
+## ESLint, Prettier & EditorConfig
+
+Ferramentas que ajudam a padronizar a escrita do código. A rocketseat gosta de utilizar o padrão de código da AirBnB
+
+#### EsLint
+
+Verifica se o código está seguindo o padrão.
+
+    $ yarn add eslint -D
+
+Para inicializar um arquivo de configurção:
+
+\$ yarn eslint --init
+
+Faz a instalação das dependências via NPM. Então deve-se remover o package-lock.json criado.
+
+Rodar yarn para fazer mapeamento das novas dependências no yarn.lock
+
+\$ yarn
+
+#### Configurar .eslintrc.js
+
+Instalar a extensão ESLint do VsCode.
+
+Para o ESLint arrumar alguns erros automaticamente, deve-se configurar no settings.json do VsCode e manter o "eslint.autoFixOnSave": true e fazer a configuração de "eslint.validate".
+
+Ver as configurações das rules em .eslintrc.js.
+
+#### Prettier
+
+    $ yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+
+Configurações em .eslintrc.js
+
+Criar .prettierrc para sobrescrever algumas regras.
+
+Para arrumar tudo de forma automatica:
+
+    $ yarn eslint --fix src --ext .js
+
+#### EditorConfig
+
+Usado para times que usam editores diferentes
+
+instalar extensão EditorConfig no VsCode e gerar e configurar o arquivo .editorconfig.
