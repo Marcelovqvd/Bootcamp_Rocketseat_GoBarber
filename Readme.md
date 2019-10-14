@@ -189,3 +189,68 @@ Para visualisar algum erro:
     $ docker log
 
 O container criado pode ser utilizado por outras aplicações ou ser configurado para ser usado somente em uma aplicação específica, o que é melhor.
+
+
+## Sequelize 
+
+Sequelize - é um ORM p NodeJS e Bancos de dados relacionais (MySql, Postgres). 
+
+ORM é uma forma de abstrair banco de dados, mudar a forma com que a aplicação se comunica com o banco de dados.
+
+Na arquitetura MVC as tabelas do banco de dados viram models, arquivos que simbolizam estas tabelas.
+
+Para manipular os dados não utiliza a linguagem SQL. Será usado apenas código Javascript. O sequelize vai fazer a tradução da sintaxe Javascript para código SQL.
+
+Esta sintaxe funciona com vários banco de dados
+
+#### Migrations
+
+Funcionalidade de controle de versão para base de dados. Mantém a base de dados atualizada entre todos os devs do time e entre ambientes de desenvolvimento e de produção.
+
+Cada arquivo de migration contém instruções para criação, alteração ou remoção de tabelas ou colunas da base de dados. 
+
+Cada arquivo é uma migration e sua ordenação ocorre por data.
+
+A partir do momento em que a migration saiu do ambiente de desenvolvimento e foi repassada para outros usuários, desenvolvedores ou se o ambiente de produção já a executou, não é mais possível editar a migration. Se precisar mudar algo, tem que criar nova migration. 
+
+Cada migration deve realizar alterações em apenas uma tabela. É específica para cada tabela. 
+
+
+#### Seeds
+
+Usado para configurar ambiente de testes. São arquivos que populam a base de dados para desenvolvimento (criam dados fakes); São usados em testes automatizados. São executáveis apenas por código/comando e nunca são utilizados em produção
+
+
+## Arquitetura MVC
+
+É forma de estruturar pastas e arquivos da aplicação para separar as responsabilidades de cada um. 
+
+#### Model 
+
+Armazena a abstração do banco e manipula os dados. Não possui responsabilidade sobre a regra de negócio da aplicação. 
+
+#### Controller 
+
+É o ponto de entrada das requisições. Uma rota geralmente está associada a um método de controller. O controller é uma classe e nele pode incluir grande parte das regras de negócio da aplicação.
+
+#### View 
+
+É o retorno ao cliente. No modelo API Rest é o JSON (não é o HTML), que será retornado ao front end e manipulado pelo React. 
+
+Características:
+
+ * classe
+ * retorna JSON
+ * Não chama outro controller
+
+#### Quando criar um novo controller:
+
+Cria-se quando houver uma nova entidade na aplicação. Pode haver controller que não tenha models. Ex. na autenticação não se cria um usuário, mas sim uma sessão, pois se está autenticando. Então neste caso seria o 'session controller'.
+
+#### 5 métodos:
+
+* index() - listar 
+* show() - exibir só um
+* store() - cadastrar
+* update() - alterar
+* delete() - deletar
