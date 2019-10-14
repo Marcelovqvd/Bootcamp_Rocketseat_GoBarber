@@ -113,3 +113,79 @@ ex de receita:
 - Instalamos as dependências (Run yarn);
 - Definimos a porta que queremos expor (Expose 3333);
 - Executamos nossa aplicação (CMD yarn start).
+
+## Configurando Docker
+
+Buscar 'Docker CE' no google para instalar
+
+[Docker](https://docs.docker.com/)
+
+Se a máquina não suportar os requirements de sistema, pode-se usar o Docker Tool Box que é uma versão mais antiga e utiliza o virtual box.
+
+[Docker Tool Box](https://docs.docker.com/docker-for-windows/docker-toolbox/)
+
+Para testar:
+  
+ Docker -v
+
+    Docker help
+
+#### Criar serviço de banco de dados Postgres
+
+Buscar docker postgres
+
+Acessar
+
+[hub.docker](https://hub.docker.com/_/postgres)
+
+Em start a postgres instance utilizar o comando abaixo com o redirecionamento de porta:
+
+    $ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+Com nome (database), senha(docker), nome da imagem (postgres) e redirecionamento de porta.
+
+Qdo acessar localhost na porta 5432 na própria máquina, acessar porta 5432 que é a que o postgres está rodando.
+
+Pode mudar as portas se uma já estiver sendo utilizada.
+
+    $ docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+
+Com o comando acima, baixa a útlima versão do Postgres e inicializa o container.
+
+Mostra o id do container
+
+    $ docker ps
+
+Lista todos os conatineres que estão em execução na máquina.
+
+Para testar, fazer download da interface PostBird
+
+[Postbird](https://electronjs.org/apps/postbird)
+
+Para fazer a conexão usar username e senha setados acima.
+
+Save and connect mostra uma database postgres pré-criada.
+
+Criar a database. As tabelas vão ser feitas pela própria aplicação.
+
+Para que a database continue sendo executada independentemente se a máquina for reiniciada:
+
+    $ docker stop nomedocontainer
+
+Para parar o container como se estivesse reiniciando a máquina
+
+    $ docker ps -a
+
+Mostra todos os containeres (mesmo os que não estão rodando)
+
+    $ docker start nomedocontainer
+
+Para verificar:
+
+    $ docker ps
+
+Para visualisar algum erro:
+
+    $ docker log
+
+O container criado pode ser utilizado por outras aplicações ou ser configurado para ser usado somente em uma aplicação específica, o que é melhor.
