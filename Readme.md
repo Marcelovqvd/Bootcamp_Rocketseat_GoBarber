@@ -91,3 +91,25 @@ Modificações no launch.json:
 
     "request": "attach"
     "protocol": "inspector"
+
+## Docker
+
+- Cria ambientes isolados(containers), que não interferem no funcionamento de outras ferramentas do servidor, da aplicação e mesmo do sistema operacional.
+
+- Expõe portas para comunicação com banco de dados. Torna possível utilizar vários banco de dados, cada um em seu container com sua porta específica, sem nenhuma conexão entre eles.
+
+- Imagem - São as ferramentas colocadas dentro dos containeres.
+
+- Container - instância de imagem.
+
+- Docker Registry(Docker Hub) - É o registro de todas as imagens do Docker.
+
+- Dockerfile - É a receita para montar uma imagem. Define como a imagem de nossa aplicação inteira possa rodar em um servidor. Assim, é possível trocar de servidor com facilidade.
+
+ex de receita:
+
+- Partimos de uma imagem existente;
+- Definimos a pasta e copiamos os arquivos;
+- Instalamos as dependências (Run yarn);
+- Definimos a porta que queremos expor (Expose 3333);
+- Executamos nossa aplicação (CMD yarn start).
