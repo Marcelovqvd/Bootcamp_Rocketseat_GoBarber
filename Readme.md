@@ -11,8 +11,6 @@ $ yarn add express
 
 criar pasta src p manter todo código manipulável da aplicação.
 
-Dentro da src, criar app.js, router.js, server.js
-
 #### app.js
 
 Vai ser a estrutura da aplicação, onde se registra os middlewares e as rotas.
@@ -39,9 +37,11 @@ Onde vai ser criado o servidor
 - exportar routes;
 - construir as rotas.
 
+Agora a parte onde está criada a estrutura da aplicação (app.js) está separada do servidor (server.js). Esta separação é importante para os testes automatizados que serão feitos na aplicação.
+
 ## Nodemon e Sucrase
 
-O node ainda não suporta algumas sintaxes. Para nãoi utilizar require por ex para importar, é possível usar formas como Babel. Aqui vamos utilizar o sucrase.
+O NodeJs ainda não suporta algumas sintaxes. Para ser possível a utilização da sintaxe import/export em vez de require, vamos utilizar o Sucrase.
 
 #### Sucrase
 
@@ -64,7 +64,7 @@ Inicializa o servidor automaticamente.
 
 Configurando:
 
-Criar arquivo de configuração p o Nodemon. Estabelece que quando executar nodemon em arquivos com extensão js, utilizar o sucrase em vez do nodemon.
+Criar arquivo de configuração p o Nodemon. Estabelece que quando executar nodemon em arquivos com extensão js, utilizar o Sucrase em vez do nodemon.
 
 Criar "scripts" no package.json p o comando yarn dev
 
@@ -73,4 +73,21 @@ $ yarn dev
 
 ```
 
-Para rodar o sucrase
+Para rodar o sucrase-node.
+
+Com o Sucrase o processo de debug vai ser modificado. Então é necessário criar novo script em package.json.
+
+    "debug": "node --inspect -r sucrase/register src/server.js"
+
+Para instalar as novas dependências:
+
+    $ yarn
+
+Para rodar o debug:
+
+    $ yarn debug
+
+Modificações no launch.json:
+
+    "request": "attach"
+    "protocol": "inspector"
