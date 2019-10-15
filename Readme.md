@@ -332,7 +332,7 @@ Utilizar o sequelize cli
 
 Com isso foi criado o arquivo de migration dentro de database/migrations. Neste arquivo há o método up (para quando a migration for executada) e o método down (Para fazer o rollback)
 
-Para executar 
+Para executar
 
     $ yarn sequelize db:migrate
 
@@ -351,3 +351,11 @@ Se precisar alterar todas as migrations
 Para recomeçar:
 
     $ yarn sequelize db:migrate
+
+## Model de usuário
+
+Serve para manipular os dados de usuários
+
+src/app/models/User.js
+
+No método super.init(), o primeiro parâmetro é um objeto contendo as colunas e valores que o usuário pode receber para edição , criação, etc e o segundo parâmetro é um objeto com sequelize.
