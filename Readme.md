@@ -323,3 +323,31 @@ e
 v. configurações em:
 
     src/config/database
+
+## Migration de usuário
+
+Utilizar o sequelize cli
+
+    $ yarn sequelize migration:create --name=create-users
+
+Com isso foi criado o arquivo de migration dentro de database/migrations. Neste arquivo há o método up (para quando a migration for executada) e o método down (Para fazer o rollback)
+
+Para executar 
+
+    $ yarn sequelize db:migrate
+
+Com isso, a tabela vai ser criada dentro da base de dados.
+
+É possível ver a tabela no software postbird. Neste, a tabela SequelizeMeta armazena todas a Migrations que o banco de dados já recebeu. Então a migration sabe quais foram e não foram executadas.
+
+Se precisar de alguma alteração na útlima migration
+
+    $ yarn sequelize db:migrate:undo
+
+Se precisar alterar todas as migrations
+
+    $ yarn sequelize db:migrate:undo:all
+
+Para recomeçar:
+
+    $ yarn sequelize db:migrate
