@@ -359,3 +359,13 @@ Serve para manipular os dados de usuários
 src/app/models/User.js
 
 No método super.init(), o primeiro parâmetro é um objeto contendo as colunas e valores que o usuário pode receber para edição , criação, etc e o segundo parâmetro é um objeto com sequelize.
+
+# Criando loader de models
+
+Arquivo que vai realizar a conexão com o banco de dados Postgres e carregar os models da aplicação
+
+    src/database/index.js
+
+O método init() vai fazer a conexão com o banco de dados e carregar os models.
+
+A coinex~~ao com a base de dados se dá pela variável this.connection. esta variável
