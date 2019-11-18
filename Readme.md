@@ -29,7 +29,7 @@ Quando a classe App for chamada, o método constructor vai ser executado automat
 Onde vai ser criado o servidor
 
 - importar o App()
-  \*app.listen(3030);
+    app.listen(3030);
 
 #### routes.js
 
@@ -126,9 +126,9 @@ Se a máquina não suportar os requirements de sistema, pode-se usar o Docker To
 
 Para testar:
 
-Docker -v
+  Docker -v
 
-    Docker help
+  Docker help
 
 #### Criar serviço de banco de dados Postgres
 
@@ -264,13 +264,13 @@ Verifica se o código está seguindo o padrão.
 
 Para inicializar um arquivo de configurção:
 
-\$ yarn eslint --init
+    $ yarn eslint --init
 
 Faz a instalação das dependências via NPM. Então deve-se remover o package-lock.json criado.
 
 Rodar yarn para fazer mapeamento das novas dependências no yarn.lock
 
-\$ yarn
+    $ yarn
 
 #### Configurar .eslintrc.js
 
@@ -298,7 +298,7 @@ Usado para times que usam editores diferentes
 
 instalar extensão EditorConfig no VsCode e gerar e configurar o arquivo .editorconfig.
 
-## Configurando Sequelize
+### Configurando Sequelize
 
     $ yarn add sequelize
 
@@ -356,11 +356,11 @@ Para recomeçar:
 
 Serve para manipular os dados de usuários
 
-src/app/models/User.js
+    src/app/models/User.js
 
 No método super.init(), o primeiro parâmetro é um objeto contendo as colunas e valores que o usuário pode receber para edição , criação, etc e o segundo parâmetro é um objeto com sequelize.
 
-# Criando loader de models
+## Criando loader de models
 
 Arquivo que vai realizar a conexão com o banco de dados Postgres e carregar os models da aplicação
 
@@ -368,4 +368,10 @@ Arquivo que vai realizar a conexão com o banco de dados Postgres e carregar os 
 
 O método init() vai fazer a conexão com o banco de dados e carregar os models.
 
-A coinex~~ao com a base de dados se dá pela variável this.connection. esta variável
+A conexão com a base de dados se dá pela variável this.connection. esta variável
+
+## Cadastro de Usuários
+
+    src/app/controllers/UserController.js
+
+findOne() p verificar se já exist o email que o user está tentando cadastrar

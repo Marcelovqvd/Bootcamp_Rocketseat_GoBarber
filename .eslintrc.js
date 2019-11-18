@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     es6: true,
-    node: true,
+    node: true
   },
   extends: ['airbnb-base', 'prettier'],
   plugins: ['prettier'],
@@ -18,6 +18,6 @@ module.exports = {
     "class-methods-use-this": "off",
     "no-param-reassign": "off",
     "camelcase": "off",
-    "no-unused-var": ["error", { "argsIgnorePattern": "next" }],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }]
   },
 };
