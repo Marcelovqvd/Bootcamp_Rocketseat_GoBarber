@@ -29,7 +29,7 @@ Quando a classe App for chamada, o método constructor vai ser executado automat
 Onde vai ser criado o servidor
 
 - importar o App()
-    app.listen(3030);
+  app.listen(3030);
 
 #### routes.js
 
@@ -126,9 +126,9 @@ Se a máquina não suportar os requirements de sistema, pode-se usar o Docker To
 
 Para testar:
 
-  Docker -v
+Docker -v
 
-  Docker help
+Docker help
 
 #### Criar serviço de banco de dados Postgres
 
@@ -140,7 +140,7 @@ Acessar
 
 Em start a postgres instance utilizar o comando abaixo com o redirecionamento de porta:
 
-    $ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+    $ docker run --name nome -e POSTGRES_PASSWORD=senha -d postgres:11
 
 Com nome (database), senha(docker), nome da imagem (postgres) e redirecionamento de porta.
 
@@ -148,21 +148,25 @@ Qdo acessar localhost na porta 5432 na própria máquina, acessar porta 5432 que
 
 Pode mudar as portas se uma já estiver sendo utilizada.
 
-    $ docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+    $ docker run --name database -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres
 
-Com o comando acima, baixa a útlima versão do Postgres e inicializa o container.
-
-Mostra o id do container
+    *Na aula - 5432:5432. Em minha máquina estou usando 5433:5432, pois já há outro container usando a porta 5432
 
     $ docker ps
 
 Lista todos os conatineres que estão em execução na máquina.
+
+### Postbird
 
 Para testar, fazer download da interface PostBird
 
 [Postbird](https://electronjs.org/apps/postbird)
 
 Para fazer a conexão usar username e senha setados acima.
+
+    port: 4533
+    username: postgres
+    password: docker
 
 Save and connect mostra uma database postgres pré-criada.
 
