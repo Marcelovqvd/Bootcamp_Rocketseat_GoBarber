@@ -379,3 +379,28 @@ A conexão com a base de dados se dá pela variável this.connection. esta vari�
     src/app/controllers/UserController.js
 
 findOne() p verificar se já exist o email que o user está tentando cadastrar
+
+## Hash de senha
+
+Armazenar senhas com segurança
+
+    $ yarn add bcryptjs
+
+importar bcrypt em /model/User.js
+
+    password: Sequelize.VIRTUAL
+
+    this.addHook('beforeSave')
+
+beforeSave - antes q qualquer user seja salvo no db o trecho de código vai ser executado automaticamente.
+
+O hash só será gerado quando estiver informando o novo password do user
+
+    this.adhook('beforeSave', async (user) => {
+      if(user.password) {
+        user.password_hash = await bcrypt.hash ...
+    }
+
+})
+
+Testar no insmonia: User.create(req.body)
