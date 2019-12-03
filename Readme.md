@@ -1,5 +1,7 @@
 # Bootcamp modulo 02 - Projeto GoBarber
 
+Trata-se de software de agendamento de serviços para salão de beleza chamado GoBarber
+
 ## Configurando estrutura
 
 ```
