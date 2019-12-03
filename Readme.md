@@ -156,7 +156,7 @@ Pode mudar as portas se uma já estiver sendo utilizada.
 
     $ docker ps
 
-Lista todos os conatineres que estão em execução na máquina.
+Lista todos os containeres que estão em execução na máquina.
 
 ### Postbird
 
@@ -166,7 +166,7 @@ Para testar, fazer download da interface PostBird
 
 Para fazer a conexão usar username e senha setados acima.
 
-    port: 4533
+    port: 5433
     username: postgres
     password: docker
 
@@ -391,6 +391,9 @@ Armazenar senhas com segurança
 importar bcrypt em /model/User.js
 
     password: Sequelize.VIRTUAL
+
+  O campo VIRTUAL não vai existir na base de dados, pois oq vai ser armazenado é o 
+  password_hash
 
     this.addHook('beforeSave')
 
