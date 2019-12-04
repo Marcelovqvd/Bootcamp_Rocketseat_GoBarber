@@ -401,11 +401,55 @@ beforeSave - antes q qualquer user seja salvo no db o trecho de código vai ser 
 
 O hash só será gerado quando estiver informando o novo password do user
 
-    this.adhook('beforeSave', async (user) => {
+    this.addhook('beforeSave', async (user) => {
       if(user.password) {
         user.password_hash = await bcrypt.hash ...
     }
-
 })
 
 Testar no insmonia: User.create(req.body)
+
+### Autenticação
+
+JWT
+
+src/app/controllers/SessionController.js
+
+instalar extensão jsonwebtoken
+
+    $ yarn add jsonwebtoken
+
+Conferir se email e senha batem com findOn() e
+ckeckPassword com bcrypt.
+
+Em return usar site md5 online para gerar um hash
+
+https://www.md5online.org/
+
+Resultado:
+
+    The MD5 hash for sisagendamento is : 265621d06841531b7a2adc24c11c3a9c
+
+Data de expiração do token em - expiresIn:
+
+Em routes.js, definir a rota que vai acessar o método do SessionController
+
+routes.post('/sessions', UserController.store);
+
+Testar no insomnia
+base_url/sessions
+Sessions - post Create
+Tentar logar com um usuário que já tenha o hash gerado. v. no Postbird
+
+Log in realizado com sucesso. No insomnia aparece o token retornado que vai
+ser usado para dizer que o usuário está autenticado na aplicação
+
+criar
+
+    src/config/auth.js
+
+Importar a parte do token do return res.json({}) de SessionController.js
+
+Importar authConfig em SessionController.js
+
+Testar no Insomnia
