@@ -452,4 +452,49 @@ Importar a parte do token do return res.json({}) de SessionController.js
 
 Importar authConfig em SessionController.js
 
+
 Testar no Insomnia
+
+## Middleware de autenticação
+
+Bloquear o usuário a acessar algum tipo de rota se não estiver logado
+
+A rota update não faz sentido p usuários que não estão logados
+
+async update em UserController
+
+Middleware para que a rota routes.put('/users' ... ) em routes.js não seja acessada por quem não está logado
+
+    src/app/middlewares/auth.js
+
+Usar o token gerado no login (está no header)
+
+#### Bearer token
+
+usa como padrão a palavra Bearer antes do token.
+
+Em auth.js, buscar o token em
+
+req.headers.authorization
+
+Importar middlewares em routes.js
+
+Definir como global:
+
+    routes.use(authMKiddleware);
+
+Agora somente as rotas que vêm depois, passam pelo middleware.
+
+    authHeader.split('') p fazer array com Beare e token
+
+    importar jwt e authconfig
+
+Em try/catch usar método 'verify' do jwt
+
+importar função promisify da biblioteca 'util' do NodeJs, para transformar função de callback em async/await
+
+decode - estão as informações ustilizadas para gerar o token (id na forma de payload em SessionController)
+
+    req.userId = decoded.id;
+
+No UserContoller se está alterando o usuário.
