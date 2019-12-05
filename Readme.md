@@ -526,3 +526,58 @@ Se tudo certo:
 
 Testar no insomnia - mudar a senha e tentar logar e gerar token
 
+
+## Validando dados de entrada
+
+Definir que dados o usuário te obrigação de fornecer
+
+#### YUP
+
+Biblioteca para validação
+
+    $yarn add yup
+
+importar Yup em UserController.js
+
+    $ import * as Yup from 'yup';
+
+#### Validação de user
+
+Importar yup em UserController.js
+
+P importar yup tem que fazer como acima pois não há export em seu arquivo.
+
+### Validações
+
+#### Criação de usuário
+
+    const schema = Yup.object().shape({})
+
+Yup segue o 'SCHEMA VALIDATION'
+
+req.body é um objeto. Por isso, Yup.object()
+
+if (!(await schema.isValid(req, res))) retorna true or false
+
+#### Edição de usuário
+
+MEsma coisa. Só mudar uns requires
+
+WHEN - validação condicional. Tem acesso a todos os campos do Yup
+
+Testar criando user sem name por ex
+
+Quando o user estiver alterando sua senha, ele deve informar um campo de confirmação da senha
+
+- password
+- confirmPassword
+
+usar método
+
+Yup.ref('')
+
+#### Sessão de usuário
+
+Validação em SessionController.js
+
+#### -------------- fim da primeira parte do projeto guia: gobarber
