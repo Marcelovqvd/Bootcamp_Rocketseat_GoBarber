@@ -498,3 +498,31 @@ decode - estão as informações ustilizadas para gerar o token (id na forma de 
     req.userId = decoded.id;
 
 No UserContoller se está alterando o usuário.
+
+## Update de usuário
+
+Para que o usuário possa laterar a senha, ele deverá ter que informar a senha antiga.
+
+    UserController.js
+    async update() oldPassword
+
+- Se for mudar email - verificar se já existe:
+
+  if(email !== user.email)
+
+Para buscar usuário pelo id:
+
+    User.findByPk()
+
+    pk = primaryKey
+
+- Se for mudar a senha:
+
+  V. se oldPassword bate com a senha já cadastrada
+
+Se tudo certo:
+
+    const { id, name, provider } = await user.update(req.body);
+
+Testar no insomnia - mudar a senha e tentar logar e gerar token
+
